@@ -9,7 +9,7 @@ NanumBarunGothic = "C:/Windows/Fonts/NanumBarunGothic.ttf"
 NotoSansKR = "C:/Windows/Fonts/NotoSansKR-Regular.otf"
 D2Coding = "C:/Windows/Fonts/D2Coding-Ver1.3.2-20180524-ligature.ttc"
 
-def text2png(text, fullpath, color = "#ffffff", bgcolor = "#000", fontfullpath = None, fontsize = 10, leftpadding = 1, rightpadding = 1, height = 20, width = 90):
+def text2png(text, fullpath, color = "#ffffff", bgcolor = "#000", fontfullpath = None, fontsize = 10, leftpadding = 1, rightpadding = 1, height = 20, width = 90, multiline = False, y_offset = 0):
 	REPLACEMENT_CHARACTER = u'\uFFFD'
 	NEWLINE_REPLACEMENT_STRING = ' ' + REPLACEMENT_CHARACTER + ' '
 
@@ -39,20 +39,22 @@ def text2png(text, fullpath, color = "#ffffff", bgcolor = "#000", fontfullpath =
 
 	line_width = font.getsize(text)[0]
 	line_height = font.getsize(text)[1]
-	#img_height = line_height * (len(lines) + 1)
-	img_height = height
+	
+	if multiline:
+		img_height = line_height * len(lines)
+	else:
+		img_height = height
 
-	img = Image.new("RGBA", (width, height), bgcolor)
+	img = Image.new("RGBA", (width, img_height), bgcolor)
 	draw = ImageDraw.Draw(img)
 
 	y = 0
 	for line in lines:
-		#draw.text( (leftpadding, y), line, color, font=font)
-		draw.text( ((90-line_width)/2,(20-line_height)/2), line, color, font=font)
+		if multiline:
+			draw.text( (leftpadding, y + y_offset), line, color, font=font)
+		else:
+			draw.text( ((width-line_width)/2, (height-line_height)/2 + y_offset), line, color, font=font)
 		y += line_height
-
-	# add linkback at the bottom
-	# draw.text( (width - linkbackx, height - linkback_height), linkback, color, font=fontlinkback)
 
 	img.save(fullpath)
 
@@ -65,23 +67,23 @@ def text2png(text, fullpath, color = "#ffffff", bgcolor = "#000", fontfullpath =
 # text2png(u"월 月 MON", '2NotoSansKR-17.png', fontfullpath = NotoSansKR, fontsize = 17) # pref
 
 # D2Coding (FOR V1.1,V2)
-def weekdaymaker(context_list, co, bgco, font_path, font_size, start_i, end_i, lp, rp, he, wi):
+def weekdaymaker(context_list, co, bgco, font_path, font_size, start_i, end_i, lp, rp, he, wi, ml):
 	start_rem = start_i % 7
 	for i in range(start_i, end_i+1):
 		if (i - start_rem) % 7 == 0:
-			text2png(context_list[0], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi)
+			text2png(context_list[0], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi, multiline = ml)
 		elif (i - start_rem) % 7 == 1:
-			text2png(context_list[1], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi)
+			text2png(context_list[1], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi, multiline = ml)
 		elif (i - start_rem) % 7 == 2:
-			text2png(context_list[2], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi)
+			text2png(context_list[2], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi, multiline = ml)
 		elif (i - start_rem) % 7 == 3:
-			text2png(context_list[3], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi)
+			text2png(context_list[3], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi, multiline = ml)
 		elif (i - start_rem) % 7 == 4:
-			text2png(context_list[4], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi)
+			text2png(context_list[4], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi, multiline = ml)
 		elif (i - start_rem) % 7 == 5:
-			text2png(context_list[5], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi)
+			text2png(context_list[5], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi, multiline = ml)
 		elif (i - start_rem) % 7 == 6:
-			text2png(context_list[6], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi)
+			text2png(context_list[6], '00' + str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, leftpadding = lp, rightpadding = rp, height = he, width = wi, multiline = ml)
 		else:
 			print("????")
 
@@ -96,7 +98,41 @@ ERLE_V1_1 = [
 	]
 
 # ERLE V1.1
-#  weekdaymaker(context_list = ERLE_V1_1, co = "#52e8e7", bgco = "#000", font_path = D2Coding, font_size = 16, start_i = 66, end_i = 86, lp = 3, rp = 3, he = 20, wi = 90)
+#  weekdaymaker(context_list = ERLE_V1_1, co = "#52e8e7", bgco = "#000", font_path = D2Coding, font_size = 16, start_i = 66, end_i = 86, lp = 3, rp = 3, he = 20, wi = 90, ml = False)
 
 # ERLE V2
-weekdaymaker(context_list = ERLE_V1_1, co = "#52e8e7", bgco = "#000", font_path = D2Coding, font_size = 16, start_i = 53, end_i = 73, lp = 1, rp = 1, he = 20, wi = 85)
+# weekdaymaker(context_list = ERLE_V1_1, co = "#52e8e7", bgco = "#000", font_path = D2Coding, font_size = 16, start_i = 53, end_i = 73, lp = 1, rp = 1, he = 20, wi = 85, ml = False)
+
+def digitmaker(co, bgco, font_path, font_size, offset = 0):
+	font = ImageFont.load_default() if font_path == None else ImageFont.truetype(font_path, font_size)
+	tmp = "8"
+	wi = font.getsize(tmp)[0]
+	he = font.getsize(tmp)[1]
+	for i in range(10):
+		text2png(str(i), str(i) + '.png', color = co, bgcolor = bgco, fontfullpath = font_path, fontsize = font_size, height = he, width = wi, y_offset = offset)
+		
+		# make dashed digit
+		im = Image.open(str(i) + '.png')
+		d = ImageDraw.Draw(im)
+		div = 6
+		gap = int(round(wi/div,0))
+		for j in range(div):
+			p1 = (0+j*gap, 0)
+			p2 = (wi+j*gap, he)
+			p3 = (0-j*gap, 0)
+			p4 = (wi-j*gap, he)
+			d.line([p1, p2], fill=bgco, width=int(round(font_size/30,0)))
+			d.line([p3, p4], fill=bgco, width=int(round(font_size/30,0)))
+		im.save(str(i) + '-d.png')
+
+# digitmaker(co = "#52e8e7", bgco = "#000", font_path = D2Coding, font_size = 100, offset = -4)
+
+def findfontsize(font_path = D2Coding, font_size = 100):
+	font = ImageFont.load_default() if font_path == None else ImageFont.truetype(font_path, font_size)
+	tmp = "8"
+	wi = font.getsize(tmp)[0]
+	he = font.getsize(tmp)[1]
+	print("font_size : " + str(font_size) + " \twidth : " + str(wi) + " \theight : " + str(he))
+
+for i in range(50,80+1):
+	findfontsize(font_size = i)
