@@ -7,6 +7,7 @@ from PIL import ImageDraw
 
 NanumBarunGothic = "C:/Windows/Fonts/NanumBarunGothic.ttf"
 NotoSansKR = "C:/Windows/Fonts/NotoSansKR-Regular.otf"
+NotoSansKR_Bold = "C:/Windows/Fonts/NotoSansKR-Bold.otf"
 D2Coding = "C:/Windows/Fonts/D2Coding-Ver1.3.2-20180524-ligature.ttc"
 
 def text2png(text, fullpath, color = "#ffffff", bgcolor = "#000", fontfullpath = None, fontsize = 10, leftpadding = 1, rightpadding = 1, height = 20, width = 90, multiline = False, y_offset = 0):
@@ -103,6 +104,19 @@ ERLE_V1_1 = [
 # ERLE V2
 # weekdaymaker(context_list = ERLE_V1_1, co = "#52e8e7", bgco = "#000", font_path = D2Coding, font_size = 16, start_i = 53, end_i = 73, lp = 1, rp = 1, he = 20, wi = 85, ml = False)
 
+ERLE_V3 = [
+	"월 月",
+	"화 火",
+	"수 水",
+	"목 木",
+	"금 金",
+	"토 土",
+	"일 日"
+	]
+
+# ERLE V3
+weekdaymaker(context_list = ERLE_V3, co = "#52e8e7", bgco = "#000", font_path = NotoSansKR_Bold, font_size = 15, start_i = 53, end_i = 73, lp = 1, rp = 1, he = 20, wi = 50, ml = False)
+
 def digitmaker(co, bgco, font_path, font_size, offset = 0):
 	font = ImageFont.load_default() if font_path == None else ImageFont.truetype(font_path, font_size)
 	tmp = "8"
@@ -134,5 +148,5 @@ def findfontsize(font_path = D2Coding, font_size = 100):
 	he = font.getsize(tmp)[1]
 	print("font_size : " + str(font_size) + " \twidth : " + str(wi) + " \theight : " + str(he))
 
-for i in range(50,80+1):
-	findfontsize(font_size = i)
+#for i in range(50,80+1):
+#	findfontsize(font_size = i)

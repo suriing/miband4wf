@@ -1,0 +1,618 @@
+This file is for documentation purposes only [You can't add comments in the .json file, so this file can't be packaged.
+]
+For version 1.3.6 (additional options for 1.3.7 at bottom)
+
+{
+    "Background": { Background image location, shouldn't be changed
+        "Image": {
+            "X": 0,
+            "Y": 0,
+            "ImageIndex": 0
+        }
+    },
+    "Time": { time
+        "Hours": { hours
+            "Tens": { ten place
+                "X": 12, X coordinate
+                "Y": 34, Y coordinate
+                "ImageIndex": 1, the first image index of the image sequence
+                "ImagesCount": 3 number of images
+            },
+            "Ones": { one place
+                "X": 62, X coordinate
+                "Y": 34, Y coordinate
+                "ImageIndex": 4, the first image index of the image sequence
+                "ImagesCount": 10 number of images
+            }
+        },
+        "Minutes": { minutes
+            "Tens": { ten place
+                "X": 12, X coordinate
+                "Y": 102, Y coordinate
+                "ImageIndex": 14, the first image index of the image sequence
+                "ImagesCount": 6 number of images
+            },
+            "Ones": { one place
+                "X": 62, X coordinate
+                "Y": 102, Y coordinate
+                "ImageIndex": 20, the first image index of the image sequence
+                "ImagesCount": 10 number of images
+            }
+        },
+        "Seconds": { seconds
+            "Tens": { ten place
+                "X": 0, X coordinate
+                "Y": 102, Y coordinate
+                "ImageIndex": 30, the first image index of the image sequence
+                "ImagesCount": 6 number of images
+            },
+            "Ones": { one place
+                "X": 10, X coordinate
+                "Y": 102, Y coordinate
+                "ImageIndex": 30, the first image index of the image sequence
+                "ImagesCount": 10 number of images
+            }
+        }
+    },
+    "Activity": { Activity data (steps, heart rate, calories, distance)
+        "Steps": { steps
+            "Step": { steps
+                "TopLeftX": 19, top left X coordinate
+                "TopLeftY": 202, top left Y coordinate
+                "BottomRightX": 54, bottom right X coordinate
+                "BottomRightY": 213, bottom right Y coordinate
+                "Alignment": "TopLeft", alignment (parameters written at the end)
+                "Spacing": 1, spacing
+                "ImageIndex": 30, the first image index of the image sequence
+                "ImagesCount": 10 number of images
+            }
+        },
+        "Calories": { calories
+            "Number": { data
+                "TopLeftX": 19, top left X coordinate
+                "TopLeftY": 183, top left Y coordinate
+                "BottomRightX": 59, bottom right X coordinate
+                "BottomRightY": 195, bottom right Y coordinate
+                "Alignment": "TopLeft", alignment (parameters written at the end)
+                "Spacing": 1, spacing
+                "ImageIndex": 30, the first image index of the image sequence
+                "ImagesCount": 10 number of images
+            },
+            "DelimiterImageIndex": 1 image index when there is no data
+        },
+        "Pulse": { pulse/heart rate
+            "Number": { data
+                "TopLeftX": 19, top left X coordinate
+                "TopLeftY": 218, top left Y coordinate
+                "BottomRightX": 59, bottom right X coordinate
+                "BottomRightY": 230, bottom right Y coordinate
+                "Alignment": "TopLeft", alignment (parameters written at the end)
+                "Spacing": 1, spacing
+                "ImageIndex": 30, the first image index of the image sequence
+                "ImagesCount": 10 number of images
+            },
+            "DelimiterImageIndex": 3 image index when there is no data
+        },
+        "Distance": { distance
+            "Number": { data
+                "TopLeftX": 60, top left X coordinate
+                "TopLeftY": 218, top left Y coordinate
+                "BottomRightX": 116, bottom right X coordinate
+                "BottomRightY": 229, bottom right Y coordinate
+                "Alignment": "Right", alignment (parameters written at the end)
+                "Spacing": 1, spacing
+                "ImageIndex": 30, the first image index of the image sequence
+                "ImagesCount": 10 number of images
+            },
+            "SuffixImageIndex": 92, unit image index
+            "DecimalPointImageIndex": 91 decimal point image index
+        }
+    },
+    "Date": { date (month, day, weekday, am/pm)
+        "MonthAndDay": { month and day
+            "Separate": { separate month & day, alternative is "OneLine"
+                "Month": { month
+                    "TopLeftX": 98, top left X coordinate
+                    "TopLeftY": 76, top left Y coordinate
+                    "BottomRightX": 118, bottom right X coordinate
+                    "BottomRightY": 92, bottom right Y coordinate
+                    "Alignment": "Center", alignment (parameters written at the end)
+                    "Spacing": 0, spacing
+                    "ImageIndex": 30, the first image index of the image sequence
+                    "ImagesCount": 10 number of images
+                },
+                "Day": { day
+                    "TopLeftX": 76, top left X coordinate
+                    "TopLeftY": 34, top left Y coordinate
+                    "BottomRightX": 96, bottom right X coordinate
+                    "BottomRightY": 50, bottom right Y coordinate
+                    "Alignment": "Center", alignment (parameters written at the end)
+                    "Spacing": 1, spacing
+                    "ImageIndex": 30, the first image index of the image sequence
+                    "ImagesCount": 10 number of images
+                }
+            },
+            ///////////////////////////////////////////
+            ALTERNATIVE: "OneLine": {
+                "Number": {
+                    "TopLeftX": 10,
+                    "TopLeftY": 159,
+                    "BottomRightX": 110,
+                    "BottomRightY": 178,
+                    "Alignment": "Center",
+                    "Spacing": 2,
+                    "ImageIndex": 39,
+                    "ImagesCount": 10
+                },
+                "DelimiterImageIndex": 38,
+            },
+            ///////////////////////////////////////////
+            "TwoDigitsMonth": true, two-digit display (month) Parameters: true/false
+            "TwoDigitsDay": true two-digit display (day) parameter: true/false
+        },
+        "WeekDay": { weekday
+            "X": 85, X coordinate
+            "Y": 115, Y coordinate
+            "ImageIndex": 61, the first image of the reference image
+            "ImagesCount": 21 number of images
+        },
+        "DayAmpm": { am/pm
+            "TopLeftX": 95, top left X coordinate
+            "TopLeftY": 145, top left Y coordinate
+            "ImageIndexAMCN": 82, am chinese
+            "ImageIndexPMCN": 83, pm chinese
+            "ImageIndexAMEN": 0, am english
+            "ImageIndexPMEN": 0 pm english
+        }
+    },
+    "StepsProgress": { step progeress display
+        "Linear": { linear representation
+            "StartImageIndex": 84, the first image of the reference image (there are several corresponding groups in the bottom)
+            "Segments": [
+                { group
+                    "X": 10, X coordinate
+                    "Y": 206, Y coordinate
+                    "X2": 0, offset X coordinate（notes at the end of the document）
+                    "Y2": 0, offset Y coordinate
+                    "X3": 0 unknown
+                },
+                {
+                    "X": 20,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 30,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 40,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 50,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 60,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 70,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 80,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 90,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 100,
+                    "Y": 206,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                }
+            ]
+        },
+        "Circle": { circle display
+            "CenterX": 63, X center position
+            "CenterY": 203, Y center position
+            "RadiusX": 29, X radius
+            "RadiusY": 29, Y radius
+            "StartAngle": 0, starting angle
+            "EndAngle": 360, ending angle
+            "Width": 3, width
+            "Color": "0xFFFFFFFFFFFFFFFF" Color: the first two digits of the transparency followed by the 6-digit hexadecimal color code
+        },
+    },
+    "Status": { Bluetooth, lock, do not disturb, battery
+        "DoNotDisturb": { Do not disturb
+            "Coordinates": {
+                "X": 4, X coordinate
+                "Y": 9, Y coordinate
+                "X2": 17, offset X coordinate（notes at the end of the article）
+                "Y2": 2, offset Y coordinate
+                "X3": 1 unknown
+            },
+            "ImageIndexOn": 94, image index when enabled
+            "ImageIndexOff": 96 image index when disabled
+        },
+        "Lock": { lock
+            "Coordinates": {
+                "X": 21, X coordinate
+                "Y": 9, Y coordinate
+                "X2": 17, offset X coordinate（notes at the end of the article）
+                "Y2": 2, offset Y coordinate
+                "X3": 1 unknown
+            },
+            "ImageIndexOn": 95, image index when enabled
+            "ImageIndexOff": 96 image index when disabled
+        },
+        "Bluetooth": { Bluetooth
+            "Coordinates": {
+                "X": 38, X coordinate
+                "Y": 9, Y coordinate
+                "X2": 12, offset X coordinate（notes at the end of the article）
+                "Y2": 2, offset Y coordinate
+                "X3": 1 unknown
+            },
+            "ImageIndexOn": 95, image index when enabled
+            "ImageIndexOff": 96 image index when disabled
+        },
+        "Battery": { Battery
+            "UnknownType": { offset coordinate
+                "TopLeftX": 0,
+                "TopLeftY": 0,
+                "BottomRightX": 0,
+                "BottomRightY": 0,
+                "Alignment": 0,
+                "Spacing": 0,
+                "ImageIndex": 0,
+                "ImagesCount": 0
+            },
+            "Text": { digital display
+                "TopLeftX": 65, top left X coordinate
+                "TopLeftY": 11, top left Y coordinate
+                "BottomRightX": 85, bottom right X coordinate
+                "BottomRightY": 21, bottom right Y coordinate
+                "Alignment": "TopRight", alignment (parameters written at the end)
+                "Spacing": 1, spacing
+                "ImageIndex": 97, the first image index of the image sequence
+                "ImagesCount": 10 number of images
+            },
+            "Icon": { icon
+                "X": 94, X coordinate
+                "Y": 9, Y coordinate
+                "ImageIndex": 107, the first image of the reference image (0%)
+                "ImagesCount": 9 number of images
+            }
+        }
+    },
+    "AnalogDialFace": { analog clock
+        "Hours": { hours
+            "OnlyBorder": false, border only parameter: true/false
+            "Color": "0xFFFFFF", color: the first two digits of the transparency followed by the 6-digit hexadecimal color code
+            "Center": { Center location
+                "X": 60, X coordinate
+                "Y": 120 Y coordinate
+            },
+            "Shape": [ Shape (this thing is best drawn with a coordinate axis)
+                {
+                    "X": 3,
+                    "Y": 0
+                },
+                {
+                    "X": 11,
+                    "Y": 0
+                },
+                {
+                    "X": 13,
+                    "Y": -3
+                },
+                {
+                    "X": 43,
+                    "Y": -3
+                },
+                {
+                    "X": 45,
+                    "Y": 0
+                },
+                {
+                    "X": 43,
+                    "Y": 4
+                },
+                {
+                    "X": 13,
+                    "Y": 4
+                },
+                {
+                    "X": 11,
+                    "Y": 1
+                },
+                {
+                    "X": 3,
+                    "Y": 1
+                }
+            ]
+        },
+        "Minutes": { minutes
+            "OnlyBorder": false, border only parameter: true/false
+            "Color": "0xFFFFFF", color: the first two digits of the transparency followed by the 6-digit hexadecimal color code
+            "Center": { Center location
+                "X": 60, X coordinate
+                "Y": 120 Y coordinate
+            },
+            "Shape": [ Shape (this thing is best drawn with a coordinate axis)
+                {
+                    "X": 3,
+                    "Y": 0
+                },
+                {
+                    "X": 11,
+                    "Y": 0
+                },
+                {
+                    "X": 13,
+                    "Y": -3
+                },
+                {
+                    "X": 57,
+                    "Y": -3
+                },
+                {
+                    "X": 59,
+                    "Y": 0
+                },
+                {
+                    "X": 57,
+                    "Y": 4
+                },
+                {
+                    "X": 13,
+                    "Y": 4
+                },
+                {
+                    "X": 11,
+                    "Y": 1
+                },
+                {
+                    "X": 3,
+                    "Y": 1
+                }
+            ]
+        },
+        "Seconds": { Seconds (do not refresh yourself)
+            "OnlyBorder": false, border only parameter: true/false
+            "Color": "0xFDA917", color: the first two digits of the transparency followed by the 6-digit hexadecimal color code
+            "Center": { Center location
+                "X": 60, X coordinate
+                "Y": 120 Y coordinate
+            },
+            "Shape": [ Shape (this thing is best drawn with a coordinate axis)
+                {
+                    "X": -11,
+                    "Y": -1
+                },
+                {
+                    "X": 59,
+                    "Y": -1
+                },
+                {
+                    "X": 59,
+                    "Y": 0
+                },
+                {
+                    "X": -11,
+                    "Y": 0
+                }
+            ],
+            "CenterImage": { Center picture
+                "X": 56, X coordinate
+                "Y": 116, Y coordinate
+                "ImageIndex": 60 image index
+            }
+        }
+    },
+    "Other": { other
+        "Animation": { animation
+            "AnimationImage": { image
+                "X": 0, X coordinate
+                "Y": 20, Y coordinate
+                "ImageIndex": 30, the first image index of the image sequence
+                "ImageCount": 10, number of images
+                "X3": 0 unknown
+            },
+            "x1": 0, Intervals below 50 do not flicker
+            "y1": 1000, Number of loops
+            "Interval": 200 useless
+        }
+    },
+    "Heart": { Heart rate
+        "Scale": { scale
+        "StartImageIndex": 116, the first image index of the image sequence (there are a few corresponding groups in the bottom)
+        "Segments": [
+                {
+                    "X": 10, X coordinate
+                    "Y": 229, Y coordinate
+                    "X2": 0, offset X coordinate（notes at the end of the article）
+                    "Y2": 0, offset Y coordinate
+                    "X3": 0 unknown
+                },
+                {
+                    "X": 27,
+                    "Y": 229,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 44,
+                    "Y": 229,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 61,
+                    "Y": 229,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 78,
+                    "Y": 229,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                },
+                {
+                    "X": 95,
+                    "Y": 229,
+                    "X2": 0,
+                    "Y2": 0,
+                    "X3": 0
+                }
+            ]
+        }
+    }
+}
+
+Alignment parameters:
+TopCenter
+TopLeft
+TopRight
+Center
+CenterLeft
+CenterRight
+BottomCenter
+BottomLeft
+BottomRight
+Note: not translated because I found no meaningful translation
+
+offset coordinate 指的是被遮住后offset 的coordinate ，在复联四表盘中有体现，各位可以试试
+///////////////////////////////////////////
+v1.3.7 additions
+Added ability to prepick witch weekdays language set are used (0-SimpleChinese,
+1-Chinese,
+2-English). Config file: "WatchFace.exe.config"
+(ex. "0" will use weekdays from 0-7 images,
+"1" will use 7-14,
+"2" will use 14-21)
+
+JSON updates
+/********************************************
+"Battery": {
+    "BatteryConfig": { <<------------------
+        "BoxWidth": 0, <<------------------
+        "Alignment": 0, <<------------------
+        "Order": 0 <<---(please use 0)-
+    },
+    "Text": {
+        "TopLeftX": 64,
+        "TopLeftY": 6,
+        "BottomRightX": 84,
+        "BottomRightY": 16,
+        "Alignment": "TopRight",
+        "Spacing": 1,
+        "ImageIndex": 59,
+        "ImagesCount": 10
+    },
+    "Icon": {
+        "X": 98,
+        "Y": 5,
+        "ImageIndex": 69,
+        "ImagesCount": 9
+    }
+}
+/********************************************
+"Status": {
+    "DoNotDisturb": {
+        "Coordinates": {
+            "X": 4,
+            "Y": 3,
+            "BoxWidth": 17, <<-----------------
+            "Alignment": "Left", <<-----------------
+            "Order": 1	<<-----------------
+        },
+        "ImageIndexOn": 91
+    },
+/********************************************
+"Activity": {
+    "Pulse": {
+        "Pulse": {
+            "TopLeftX": 17,
+            "TopLeftY": 191,
+            "BottomRightX": 34,
+            "BottomRightY": 230,
+            "Alignment": "Left",
+            "Spacing": 1,
+            "ImageIndex": 34,
+            "ImagesCount": 10
+        },
+        "NoDataImageIndex": 45 <<-----------------
+    },
+/********************************************
+"StepsProgress": {
+    "Linear": {
+        "StartImageIndex": 103,
+        "Segments": [ <<-----------------
+            {
+                "X": 5,
+                "Y": 203
+            },
+/********************************************
+"Other": {
+    "Animation": {
+        "AnimationImage": {
+            "X": 10,
+            "Y": 72,
+            "ImageIndex": 46,
+            "ImageCount": 20,
+            "X3": 0
+        },
+        "x1": 1,
+        "RepeatCount": 8, <<-----------------
+        "x2": 200 <<-----------------
+    }
+/********************************************
+
+v1.3.9 changes
+- Removed dependence on images order 0000->XXXX
+- Calories rendering fixed
+- Added ability to change Preview Speed (available from 50ms - 1000ms)
+- TimeElement DrawingOrder hardcoded to 1234 (not used by MiBand4)
+- [JSON] Calories model update DelimiterImageIndex->SuffixImageIndex
+- [JSON] Animation Speed discovered x1 -> Speed (Recommended 0-45)
+- [JSON] Animation ImageCount -> ImagesCount
+- [JSON] DayAmPm  TopLeftX -> X , TopLeftY -> Y
+- [JSON] Steps  Step -> Number
+- [JSON] Pulse  Pulse -> Number
+- [JSON] Calories  Calories -> Number
